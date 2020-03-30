@@ -1,14 +1,16 @@
 # Where_to_Build
-This project is made as a part of RoboHack1.0 organized by AmuRoboclub.
+In this project we ***aim*** to build **new health centers** at places where there is a **lack of medical services** using a **dynamic mapping** system. The ***tools*** that we have used so far are **web scraping** , **python3**(for making our base code run).Website is constructed using **HTML, CSS, Bootstrap, Javascript, Flask(_WTForms,_Bootstrap,etc.), SQLAlchemy and Sqlite(as database for login information)**. 
+The **coronavirus pandemic** has shown us all in just a few days how fragile our way of life really is. Basic certainties about our health, that of our loved ones and our normal way of life can no longer be taken for granted.Opening temporary or permanent **medical centers at the right place** for now is the basic aim so that for any sort of treatment no one has to travel long distances and can be cured at nearby places itself and medical services can reach a large number of people at same time.
+## Getting Started
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-### This aims at providing Government authoriities of a city to get the best place to open a Healthcare Service.
-In this project we aim to build new health centers at places where there is a lack of medical services using dynamic mapping system.
-The tools that we have used so far are data-mining , webscraping , python3(for making our base code run) etc.
-An overview of project:
-Opening temporary or permanent medical centers at correct places for now is the basic aim so that for any sort of treatment no one has to travel long distances and can be cured at nearby places itself and medical services can reach to large number of people at same time.
-In this project , we have used a dynamic map of sample city (name_of_city_here) . 
+# Prerequisites
 
-Next, for sample we extracted coordinates of these marked places in order to calculate a rough distance between them and stored them all in a csv file(we will be representing two csv files).
-This is to give us an idea to make travelling less.
+Install [python3(latest version)](https://www.python.org/downloads/), [flask](https://flask.palletsprojects.com/en/1.1.x/installation/) from the links.
+
+**Direct installation of dependencies**
+> 1. After cloning repository, head to the directory for *requirements.txt*.
+> 2. Run the following command in terminal `pip install -r requirements.txt`>
+
 
 
