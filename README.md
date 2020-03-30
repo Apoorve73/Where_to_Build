@@ -45,6 +45,7 @@ Once done with the project setup, open the project in an [**IDE**](https://wiki.
  * Copy `http://127.0.0.1:5000/` and open it in a browser and Voila!
  
  * For Quick Demo, click on `Get Demo Here` tab.
+![Best among 2000 registered properties mapped for building new hospitals](https://github.com/Apoorve73/Where_to_Build/blob/master/Map_Dallas.png)
 
 > ***Without using shell***
 > 1. Open `main.py`
