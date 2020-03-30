@@ -62,7 +62,7 @@ pandocfilters==1.4.2
 parso==0.6.2
 pexpect==4.2.1
 pickleshare==0.7.5
-Pillow==5.1.0
+Pillow==6.2.0
 pipenv==2018.11.26
 prometheus-client==0.7.1
 prompt-toolkit==3.0.3
