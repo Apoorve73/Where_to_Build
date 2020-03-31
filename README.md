@@ -45,7 +45,7 @@ source myenv/bin/activate
 myenv\Scripts\activate
 ```
 
-* Head to the project directory conteining ```main.py```
+* Head to the project directory containing ```main.py```
 
 * Open Terminal(Mac/Linux)/Command Prompt (Windows) there.
 
