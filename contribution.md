@@ -30,8 +30,6 @@ Please note we have a code of conduct, please follow it in all your interactions
    variables, exposed ports, useful file locations and container parameters.
 3. Increase the version numbers in any examples files and the README.md to the new version that this
    Pull Request would represent. 
-4. You may merge the Pull Request in once you have the sign-off of three other developers, or if you 
-   do not have permission to do that, you may request the second reviewer to merge it for you.
 
 ## Code of Conduct
 
