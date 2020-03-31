@@ -150,7 +150,7 @@
                         function initMap() {
                            var locations = [];
                             {% for coord in coords %}
-                                locations.push([ '{{ coord.address }}', {{ coord.lat }}, {{ coord.lng }}]);
+                                locations.push([ '{{ coord.address }}', {{ coord.lat }}, {{ coord.lng }}, '{{ coord.imageurl }}']);
                             {% endfor %}
                             var grayStyles = [{
                                     featureType: "all",
@@ -187,7 +187,8 @@
 
                             google.maps.event.addListener(marker, 'click', (function(marker, i) {
                                 return function() {
-                                infowindow.setContent(locations[i][0]);
+
+                                infowindow.setContent("<h4>"+ locations[i][0] + "</h4>" + "<p><font color='blue'>" + locations[i][3] + "</font></p>");
                                 infowindow.open(map, marker);
                             }
                         })(marker, i));
