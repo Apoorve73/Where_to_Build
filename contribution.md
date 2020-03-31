@@ -9,6 +9,12 @@ It would be good if we are able to collect more data visuals of affected places.
 
 When contributing to this repository, please first discuss the change you wish to make via issue,
 email, or any other method with the owners of this repository before making a change. 
+## Feel free! Contact us!
+Apoorve Goyal : apoorve73@gmail.com
+Sanjana Maheshwari : sanjana.maheshwari456@gmail.com
+Saloni Gupta:saloniguptasg12@gmail.com
+
+
 
 Please note we have a code of conduct, please follow it in all your interactions with the project.
 
@@ -61,7 +67,7 @@ further defined and clarified by project maintainers.
 ### Enforcement
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
-reported by contacting the project team at [apoorve73@gmail.com]. All
+reported by contacting the project team at mentioned email addresses. All
 complaints will be reviewed and investigated and will result in a response that
 is deemed necessary and appropriate to the circumstances. The project team is
 obligated to maintain confidentiality with regard to the reporter of an incident.
