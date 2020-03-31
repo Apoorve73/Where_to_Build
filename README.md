@@ -22,15 +22,20 @@ Once done with the project setup, open the project in an [**IDE**](https://wiki.
 ***NOTE : Be sure to select appropriate interpreter. Sometimes it may get deselected.***
 
 *  ### From Command Line Interface
+* Head to the project directory conteining ```main.py```
+
+* Open Terminal(Mac/Linux)/Command Prompt there.
+
+* Follow accordingly :arrow_down:
 
   1. **Unix Bash (Linux, Mac, etc.):**
   ```
-  $ export FLASK_APP=1
+  $ export FLASK_APP=main/py
   $ flask run
   ```
   2. **Windows CMD:**
   ```
-  > set FLASK_APP=1
+  > set FLASK_APP=main.py
   > flask run
   ```
   3. **Windows PowerShell:**
@@ -53,6 +58,9 @@ Once done with the project setup, open the project in an [**IDE**](https://wiki.
 > ***Without using shell***
 > 1. Open `main.py`
 > 2. Hit `Run`, if using any IDE as mentioned above.
+
+## Contribution
+Pleas read [Contribution.md](https://github.com/Apoorve73/Where_to_Build/blob/master/contribution.md) :point_up_2: for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Authors
 
