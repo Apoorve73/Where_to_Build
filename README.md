@@ -19,7 +19,7 @@ Install [python3(latest version)](https://www.python.org/downloads/), [flask](ht
 Once done with the project setup, open the project in an [**IDE**](https://wiki.python.org/moin/IntegratedDevelopmentEnvironments); for example - [**PyCharm**](https://www.jetbrains.com/pycharm/), [**Visual Studio Code**](https://code.visualstudio.com/), etc.
 
 
-NOTE:Be sure to select appropriate interpreter. Sometimes it may get deselected.
+***NOTE : Be sure to select appropriate interpreter. Sometimes it may get deselected.***
 
 *  ### From CLI 
 
