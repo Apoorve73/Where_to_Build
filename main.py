@@ -1,11 +1,16 @@
-#Running the file
-#go to the directory where this Folder is
-#Now >> export FLASK_DEBUG=1
-# >> flask run
-# Copy link of local host
-
+#importing modules for getting the best site
 import json
 import math as Math
+
+#importing libraries for Authentication System
+from flask import Flask, render_template, redirect, url_for
+from flask_bootstrap import Bootstrap
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, BooleanField
+from wtforms.validators import InputRequired, Email, Length
+from flask_sqlalchemy import SQLAlchemy
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 
 filename = "VacantLand_Dallas"  # File for Property for Sale Coordinates
 filename2 = "DallasHospitals"  # File for Hospital Coordinates
@@ -63,19 +68,11 @@ def distanceInKmBetweenEarthCoordinates(lat1, lon1, lat2, lon2):
     c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     return (earthRadiuskm * c)
 
-
-## lat1 = int(input("Enter latitude1 :"))
-## lon1 = int(input("Enter longitude1 :"))
-## lat2 = int(input("Enter latitude2 :"))
-## lon2 = int(input("Enter longitude2 :"))
 distance = list()
 latitude = list()
 longitude = list()
 num_Hosp = list()
 address = list()
-
-# lath = {}
-# lonh = {}
 
 # def in_range_check(latt, lont, lath, lonh, count, j):
 #     #for j in range(0,len(lon1)):
@@ -103,35 +100,50 @@ for i in range(0, len(lat1)):
         num_Hosp.append(count)
     distance.clear()
 
-#print("The best places for setting up Health Care Services are:")
-#print("Address", "  ,", "Latitude", " ,", "Longitude", "  --> Number of nearby Hospitals")
-center = list()
+coordinates = list()
 for i in range(len(address)):
-    center.append({'address': address[i], 'lat': latitude[i], 'lng': longitude[i]})
+    coordinates.append({'address': address[i], 'lat': latitude[i], 'lng': longitude[i]})
 
-# Checking for the property with minimum number of Hospitals or no Hospitals in the given range
-# num = 0
-# for i in range(0, len(num_Hosp)):
-#     if num_Hosp[i] == min(num_Hosp):
-#         print(address[i], ",", latitude[i], ",", longitude[i], " -->", num_Hosp[i])
-#         num = num + 1
-#print("Number of total Locations : ", num)
-#print(center)
-##print(max(distance))
-## print("xxxxxxxxxxxxxxxxxxxxxxxx")
-## # for d in distance:
-## #     if(d<10):
-## #         print(d)
-## for l in length:
-##     if(l>=0 and l<5):
-##         print(l)
-from flask import Flask, render_template
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'Thisissupposedtobesecret!'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+bootstrap = Bootstrap(app)
+db = SQLAlchemy(app)
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'login'
+
+
+class User(UserMixin, db.Model):
+    id = db.Column(db.Integer, primary_key=True)  # noqa
+    username = db.Column(db.String(15), unique=True)  # noqa
+    email = db.Column(db.String(50), unique=True)  # noqa
+    password = db.Column(db.String(80))  # noqa
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
+
+class LoginForm(FlaskForm):
+    username = StringField('username', validators=[InputRequired(), Length(min=4, max=15)])
+    password = PasswordField('password', validators=[InputRequired(), Length(min=8, max=80)])
+    remember = BooleanField('remember me')
+
+
+class RegisterForm(FlaskForm):
+    email = StringField('email', validators=[InputRequired(), Email(message='Invalid email'), Length(max=50)])
+    username = StringField('username', validators=[InputRequired(), Length(min=4, max=15)])
+    password = PasswordField('password', validators=[InputRequired(), Length(min=8, max=80)])
+
+
+db.create_all()
         #{'lat' : '32.779167', 'lng' : '-96.808891'}]
 @app.route("/")
 
 def home():
-    return render_template('index.html')
+    return render_template('index_main.html')
 
 @app.route("/about")
 
@@ -146,7 +158,58 @@ def contacts():
 @app.route("/services")
 #decorator, just a way to add functionality to ezisting function
 def services():
-    return render_template('services.html', coords = center)
+    return render_template('services.html', coords = coordinates)
+
+@app.route('/Redirect')
+def index():
+    return render_template('index.html')
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+
+    if form.validate_on_submit():
+        user = User.query.filter_by(username=form.username.data).first()
+        if user:
+            if check_password_hash(user.password, form.password.data):
+                login_user(user, remember=form.remember.data)
+                return redirect(url_for('services'))
+
+        return '<h1>Invalid username or password</h1>'
+        # return '<h1>' + form.username.data + ' ' + form.password.data + '</h1>'
+
+    return render_template('login.html', form=form)
+
+
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    form = RegisterForm()
+
+    if form.validate_on_submit():
+        hashed_password = generate_password_hash(form.password.data, method='sha256')
+        new_user = User(username = form.username.data, email=form.email.data, password=hashed_password)
+        db.session.add(new_user)
+        db.session.commit()
+        return redirect(url_for('login'))
+        #return '<h1>New user has been created!</h1>'
+        # return '<h1>' + form.username.data + ' ' + form.email.data + ' ' + form.password.data + '</h1>'
+
+    return render_template('signup.html', form=form)
+
+
+@app.route('/dashboard')
+@login_required
+def dashboard():
+    return render_template('dashboard.html', name=current_user.username)
+
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('Redirect'))
+
 
 
 if __name__ == "__main__":
