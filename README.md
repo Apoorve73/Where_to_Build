@@ -25,17 +25,17 @@ Once done with the project setup, open the project in an [**IDE**](https://wiki.
 
   1. **Unix Bash (Linux, Mac, etc.):**
   ```
-  $ export FLASK_APP=hello
+  $ export FLASK_APP=1
   $ flask run
   ```
   2. **Windows CMD:**
   ```
-  > set FLASK_APP=hello
+  > set FLASK_APP=1
   > flask run
   ```
   3. **Windows PowerShell:**
    ```
-  > $env:FLASK_APP = "hello"
+  > $env:FLASK_APP = "1"
   > flask run
   ```
 * ### Output:
