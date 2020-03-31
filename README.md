@@ -21,7 +21,7 @@ Once done with the project setup, open the project in an [**IDE**](https://wiki.
 
 ***NOTE : Be sure to select appropriate interpreter. Sometimes it may get deselected.***
 
-*  ### From CLI 
+*  ### From Command Line Interface
 
   1. **Unix Bash (Linux, Mac, etc.):**
   ```
