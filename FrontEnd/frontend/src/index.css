@@ -1,5 +1,7 @@
 body {
   margin: 0;
+  padding: 0;
+  background: #262626;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -11,3 +13,101 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/*Navbar starts*/
+ul {
+  margin: 300px 200px;
+  padding: 0;
+  display: flex;
+}
+ul li {
+  list-style: none;
+  padding: 10px 40px;
+}
+ul li a {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 1.5em;
+  color: #fff;
+  position: relative;
+  padding: 5px;
+}
+ul li a:hover {
+  color: #ff0;
+}
+ul li a span:first-child:before {
+  content:"";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background: transparent;
+  border-top: 2px solid #ff0;
+  border-left: 2px solid #ff0;
+  transition: .2s;
+  opacity: 0;
+}
+ul li a span:first-child:after {
+  content:"";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  background: transparent;
+  border-top: 2px solid #ff0;
+  border-right: 2px solid #ff0;
+  transition: .2s;
+  opacity: 0;
+}
+
+ul li a span:last-child:before {
+  content:"";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background: transparent;
+  border-bottom: 2px solid #ff0;
+  border-left: 2px solid #ff0;
+  transition: .2s;
+  opacity: 0;
+}
+ul li a span:last-child:after {
+  content:"";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  background: transparent;
+  border-bottom: 2px solid #ff0;
+  border-right: 2px solid #ff0;
+  transition: .2s;
+  opacity: 0; 
+}
+ul li a:hover span:first-child:before {
+  top: -10px;
+  left: -10px;
+  opacity: 1;
+}
+ul li a:hover span:first-child:after {
+  top: -10px;
+  right: -10px;
+  opacity: 1;
+}
+
+ul li a:hover span:last-child:before {
+  bottom: -10px;
+  left: -10px;
+  opacity: 1;
+}
+ul li a:hover span:last-child:after {
+  bottom: -10px;
+  right: -10px;
+  opacity: 1;
+}
+
+/*Navbar ends*/
